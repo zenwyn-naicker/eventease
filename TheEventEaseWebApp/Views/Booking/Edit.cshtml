@@ -1,0 +1,44 @@
+@model TheEventEaseWebApp.Models.Booking
+@{
+    ViewData["Title"] = "Edit";
+}
+<h1>Edit Booking</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <input type="hidden" asp-for="BookingId" />
+            <!-- Event Dropdown -->
+            <div class="form-group mb-3">
+                <label asp-for="EventId" class="control-label"></label>
+                <select asp-for="EventId" class="form-control" asp-items="ViewBag.EventId"></select>
+                <span asp-validation-for="EventId" class="text-danger"></span>
+            </div>
+            <!-- Venue Dropdown -->
+            <div class="form-group mb-3">
+                <label asp-for="VenueId" class="control-label"></label>
+                <select asp-for="VenueId" class="form-control" asp-items="ViewBag.VenueId"></select>
+                <span asp-validation-for="VenueId" class="text-danger"></span>
+            </div>
+            <!-- Booking Date -->
+            <div class="form-group mb-3">
+                <label asp-for="BookingDate" class="control-label"></label>
+                <input asp-for="BookingDate" type="date" class="form-control"
+                       value="@(Model.BookingDate?.ToString("yyyy-MM-dd"))" />
+                <span asp-validation-for="BookingDate" class="text-danger"></span>
+            </div>
+            <!-- Save Button -->
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-rosybrown" />
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Back to List Button -->
+<div>
+    <a asp-action="Index" class="btn btn-secondary mt-3">Back to List</a>
+</div>
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

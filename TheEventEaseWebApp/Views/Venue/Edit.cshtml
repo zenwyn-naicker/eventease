@@ -1,0 +1,70 @@
+@model TheEventEaseWebApp.Models.Venue
+@{
+    ViewData["Title"] = "Edit Venue";
+}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8 col-sm-10">
+            <div class="card shadow">
+                <div class="card-header bg-rosybrown text-white text-center">
+                    <h2 class="mb-0">Edit Venue</h2>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Edit" enctype="multipart/form-data" method="post">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <input type="hidden" asp-for="VenueId" />
+                        <input type="hidden" asp-for="ImageUrl" />
+                        <!-- Venue Name -->
+                        <div class="form-group mb-3">
+                            <label asp-for="VenueName" class="control-label"></label>
+                            <input asp-for="VenueName" class="form-control" />
+                            <span asp-validation-for="VenueName" class="text-danger"></span>
+                        </div>
+                        <!-- Location -->
+                        <div class="form-group mb-3">
+                            <label asp-for="Location" class="control-label"></label>
+                            <input asp-for="Location" class="form-control" />
+                            <span asp-validation-for="Location" class="text-danger"></span>
+                        </div>
+                        <!-- Capacity -->
+                        <div class="form-group mb-3">
+                            <label asp-for="Capacity" class="control-label"></label>
+                            <input asp-for="Capacity" class="form-control" />
+                            <span asp-validation-for="Capacity" class="text-danger"></span>
+                        </div>
+                        <!-- Availability Field -->
+                        <div class="form-group mb-3">
+                            <div class="form-check">
+                                <input asp-for="Availability" class="form-check-input" type="checkbox" />
+                                <label asp-for="Availability" class="form-check-label">Available for booking</label>
+                            </div>
+                            <span asp-validation-for="Availability" class="text-danger"></span>
+                        </div>
+                        <!-- Venue Image -->
+                        <div class="form-group mb-3">
+                            <label for="imageFile" class="control-label">Venue Image</label>
+                            <input type="file" id="imageFile" name="imageFile" class="form-control" accept="image/*" />
+                            @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                            {
+                                <div class="mt-2">
+                                    <img src="@Model.ImageUrl" alt="@Model.VenueName" style="max-width: 300px; max-height: 200px;" class="img-thumbnail" />
+                                    <p class="text-muted">Current image (upload a new one to replace)</p>
+                                </div>
+                            }
+                        </div>
+                        <!-- Submit Button -->
+                        <div class="form-group mt-4 text-center">
+                            <input type="submit" value="Save Changes" class="btn btn-rosybrown me-2" />
+                            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,120 @@
+/* Global Styles */
+html {
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 60px;
+    background: #f7f5f0;
+}
+
+/* Navbar */
+.navbar {
+    background-color: rosybrown !important;
+}
+
+    .navbar .nav-link,
+    .navbar .navbar-brand {
+        color: white !important;
+    }
+
+        .navbar .nav-link:hover {
+            color: black !important;
+        }
+
+/* Home page */
+body.home-page {
+    background: url('/images/VenueWallpaper.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: black;
+}
+
+/* Buttons */
+.btn-rosybrown {
+    background-color: rosybrown;
+    color: white;
+    border: none;
+}
+
+    .btn-rosybrown:hover {
+        background-color: #a0736e;
+        color: white;
+    }
+
+/* Text styling */
+.text-clear {
+    font-size: 4.5rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: rosybrown;
+    -webkit-text-stroke: 3px #5C4033;
+    margin: 0.2em 0;
+    padding: 0.1em 0;
+    line-height: 1.2;
+}
+
+/* Cards & Forms */
+.bg-rosybrown {
+    background-color: rosybrown !important;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.shadow {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+.card-header {
+    border-bottom: none;
+    border-radius: 10px 10px 0 0 !important;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.border-rosybrown {
+    border: 2px solid rosybrown !important;
+}
+
+/* Form Controls */
+.form-control:focus {
+    border-color: rosybrown;
+    box-shadow: 0 0 0 0.2rem rgba(188, 143, 143, 0.25);
+}
+
+.form-check-input:checked {
+    background-color: rosybrown;
+    border-color: rosybrown;
+}
+
+.form-control, .form-select {
+    background-color: white;
+    color: #333;
+    border: 1px solid #ccc;
+}
+
+/* Tables & Badges */
+.table {
+    background-color: white;
+    color: #333;
+}
+
+.badge {
+    font-size: 0.8em;
+}
+

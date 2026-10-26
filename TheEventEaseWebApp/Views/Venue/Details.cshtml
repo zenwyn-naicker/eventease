@@ -1,0 +1,67 @@
+@model TheEventEaseWebApp.Models.Venue
+
+@{
+    ViewData["Title"] = "Venue Details";
+}
+
+<h1>Venue Details</h1>
+<div>
+    <hr />
+    <dl class="row">
+        <!-- Venue Name -->
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.VenueName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.VenueName)
+        </dd>
+        <!-- Location -->
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+        <!-- Capacity -->
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Capacity)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Capacity)
+        </dd>
+        <!-- Availability -->
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Availability)
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.Availability)
+            {
+                <span class="badge bg-success text-white">Available</span>
+            }
+            else
+            {
+                <span class="badge bg-danger text-white">Unavailable</span>
+            }
+        </dd>
+        <!-- Venue Image -->
+        <dt class="col-sm-2">
+            Image
+        </dt>
+        <dd class="col-sm-10">
+            @if (!string.IsNullOrEmpty(Model.ImageUrl))
+            {
+                <img src="@Model.ImageUrl" alt="Venue Image" class="img-thumbnail" style="width:150px; height:100px;">
+            }
+            else
+            {
+                <span class="text-muted">No Image Available</span>
+            }
+        </dd>
+    </dl>
+</div>
+
+<!-- Styled buttons for Edit and Back -->
+<div class="mt-3">
+    <a asp-action="Edit" asp-route-id="@Model?.VenueId" class="btn btn-rosybrown">Edit</a>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>

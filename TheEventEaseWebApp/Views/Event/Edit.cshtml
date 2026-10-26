@@ -1,0 +1,68 @@
+@model TheEventEaseWebApp.Models.Event
+@{
+    ViewData["Title"] = "Edit Event";
+}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8 col-sm-10">
+            <div class="card shadow">
+                <div class="card-header bg-rosybrown text-white text-center">
+                    <h2 class="mb-0">Edit Event</h2>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Edit" enctype="multipart/form-data" method="post">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <input type="hidden" asp-for="EventId" />
+                        <input type="hidden" asp-for="ImageUrl" />
+                        <div class="form-group mb-3">
+                            <label asp-for="EventName" class="form-label"></label>
+                            <input asp-for="EventName" class="form-control" />
+                            <span asp-validation-for="EventName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label asp-for="EventDate" class="form-label"></label>
+                            <input asp-for="EventDate" type="date" class="form-control" 
+                                   value="@Model.EventDate.ToString("yyyy-MM-dd")" />
+                            <span asp-validation-for="EventDate" class="text-danger"></span>
+                        </div>
+                        <!-- Event Type Dropdown -->
+                        <div class="form-group mb-3">
+                            <label asp-for="EventTypeId" class="form-label">Event Type</label>
+                            <select asp-for="EventTypeId" class="form-control" asp-items="ViewBag.EventTypeId">
+                                <option value="">-- Select Event Type --</option>
+                            </select>
+                            <span asp-validation-for="EventTypeId" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label asp-for="Description" class="form-label"></label>
+                            <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                        <!-- Image Upload Field -->
+                        <div class="form-group mb-3">
+                            <label for="imageFile" class="form-label">Event Image</label>
+                            <input type="file" id="imageFile" name="imageFile" class="form-control" accept="image/*" />
+                            @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                            {
+                                    <div class="mt-2">
+                                        <img src="@Model.ImageUrl" alt="@Model.EventName" style="max-width: 300px; max-height: 200px;" class="img-thumbnail" />
+                                        <p class="text-muted">Current image (upload a new one to replace)</p>
+                                    </div>
+                            }
+                        </div>
+                        <!-- Save Button -->
+                        <div class="form-group mt-4 text-center">
+                            <input type="submit" value="Save Changes" class="btn btn-rosybrown me-2" />
+                            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
